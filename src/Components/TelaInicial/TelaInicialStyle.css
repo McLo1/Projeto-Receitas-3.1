@@ -1,0 +1,165 @@
+/* Estilos Gerais do Corpo (para uma base limpa e centralizada) */
+body {
+    font-family: 'Inter', sans-serif; /* Fonte moderna e limpa */
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Fundo cinza muito claro */
+    color: #333; /* Texto em cinza escuro */
+    line-height: 1.6;
+    display: flex; /* Habilita flexbox no corpo para centralizar o conteúdo da página */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que o corpo ocupe 100% da altura da viewport */
+    overflow: auto; /* Permite rolagem se o conteúdo for maior que a tela */
+}
+
+/* --- */
+
+/* Container Principal da Home */
+.home {
+    display: flex;
+    flex-direction: column; /* Organiza os itens em coluna */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    text-align: center; /* Centraliza o texto dentro do container */
+    padding: 40px 20px; /* Espaçamento interno generoso */
+    box-sizing: border-box; /* Inclui padding e borda no tamanho total do elemento */
+    background-color: #ffffff; /* Fundo branco puro para a caixa de conteúdo */
+    border-radius: 12px; /* Bordas levemente mais arredondadas */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Sombra mais sutil e espalhada */
+    margin: 20px; /* Margem em volta da caixa, tornando-a responsiva */
+    max-width: 700px; /* Limita a largura máxima da caixa de conteúdo */
+    width: calc(100% - 40px); /* Largura responsiva, com margem total de 40px */
+}
+
+/* --- */
+
+/* Estilo do Título */
+.home h1 {
+    color: #2c3e50; /* Um azul/cinza mais escuro e profissional para contraste */
+    margin-bottom: 25px;
+    font-size: 2.8em; /* Título um pouco maior */
+    font-weight: 700; /* Mais negrito */
+}
+
+/* Estilo dos Parágrafos */
+.home p {
+    font-size: 1.15em; /* Texto ligeiramente maior */
+    margin-bottom: 18px;
+    color: #555; /* Cor de texto mais suave */
+    max-width: 550px; /* Limita a largura do parágrafo para melhor legibilidade */
+}
+
+/* --- */
+
+/* Container dos Botões */
+.home .button-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha em telas menores */
+    justify-content: center; /* Centraliza os botões quando quebram */
+    gap: 15px; /* Espaçamento entre os botões */
+    margin-top: 35px; /* Mais espaço acima dos botões */
+}
+
+/* Estilo Base dos Botões */
+.home button {
+    padding: 14px 30px; /* Mais preenchimento para botões maiores e mais suaves */
+    border: none;
+    border-radius: 8px; /* Bordas arredondadas consistentes */
+    font-size: 1.05em;
+    font-weight: 600; /* Texto ligeiramente mais negrito */
+    cursor: pointer; /* Indica que é clicável */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Transições suaves */
+    color: white; /* Cor do texto do botão */
+    min-width: 200px; /* Largura mínima para os botões */
+    text-transform: uppercase; /* Texto em maiúsculas para os botões */
+    letter-spacing: 0.5px; /* Espaçamento entre letras */
+}
+
+/* Estilo do Primeiro Botão ("Verificar Receitas Salvas") */
+.home button:first-of-type {
+    background-color: #2ecc71; /* Um verde vibrante */
+}
+
+.home button:first-of-type:hover {
+    background-color: #27ae60; /* Verde mais escuro no hover */
+    transform: translateY(-3px); /* Efeito de "levantar" mais pronunciado */
+    box-shadow: 0 8px 15px rgba(46, 204, 113, 0.2); /* Sombra verde no hover */
+}
+
+/* Estilo do Segundo Botão ("Cadastrar Nova Receita") */
+.home button:last-of-type {
+    background-color: #3498db; /* Um azul vibrante */
+}
+
+.home button:last-of-type:hover {
+    background-color: #2980b9; /* Azul mais escuro no hover */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(52, 152, 219, 0.2); /* Sombra azul no hover */
+}
+
+/* --- */
+
+/* Ajustes de Responsividade (para diferentes tamanhos de tela) */
+
+/* Para telas até 768px (tablets e alguns notebooks pequenos) */
+@media (max-width: 768px) {
+    .home {
+        padding: 30px 15px; /* Reduz o padding */
+        margin: 15px; /* Reduz a margem */
+        width: calc(100% - 30px); /* Ajusta a largura total */
+    }
+
+    .home h1 {
+        font-size: 2.2em;
+        margin-bottom: 20px;
+    }
+
+    .home p {
+        font-size: 1em;
+        margin-bottom: 15px;
+    }
+
+    .home .button-container {
+        flex-direction: column; /* Empilha os botões verticalmente */
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .home button {
+        width: 100%; /* Botões ocupam 100% da largura do container */
+        max-width: 280px; /* Mas com uma largura máxima para não ficarem muito grandes */
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+}
+
+/* Para telas até 480px (smartphones) */
+@media (max-width: 480px) {
+    .home {
+        padding: 25px 10px; /* Reduz ainda mais o padding */
+        margin: 10px; /* Reduz a margem */
+        border-radius: 10px;
+        width: calc(100% - 20px);
+    }
+
+    .home h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+
+    .home p {
+        font-size: 0.95em;
+        margin-bottom: 12px;
+    }
+
+    .home .button-container {
+        gap: 10px;
+        margin-top: 25px;
+    }
+
+    .home button {
+        padding: 10px 20px;
+        font-size: 0.95em;
+        min-width: unset; /* Remove o min-width em telas muito pequenas */
+    }
+}
