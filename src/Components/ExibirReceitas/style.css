@@ -1,0 +1,155 @@
+/* General Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* --- */
+
+/* Recipe List Container */
+.lista-receitas {
+    list-style: none;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Limit overall width */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 25px;
+}
+
+/* --- */
+
+/* Individual Recipe Card */
+.lista-receitas li {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out;
+}
+
+.lista-receitas li:hover {
+    transform: translateY(-5px);
+}
+
+.lista-receitas li img {
+    width: 100%; /* Make image responsive */
+    height: 200px;
+    object-fit: cover; /* Cover the area, maintaining aspect ratio */
+    border-bottom: 1px solid #eee;
+}
+
+.lista-receitas li h2 {
+    font-size: 1.8em;
+    color: #007bff; /* A nice blue for titles */
+    margin: 15px 15px 5px;
+}
+
+.lista-receitas li h3 {
+    font-size: 1.1em;
+    color: #555;
+    margin: 10px 15px 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.lista-receitas li p {
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin: 0 15px 15px;
+    flex-grow: 1; /* Allow description to take up available space */
+}
+
+.lista-receitas li p strong {
+    color: #007bff;
+}
+
+/* --- */
+
+/* Back Button */
+.lista-receitas .lista-receitas-Home {
+    display: block;
+    width: fit-content;
+    margin: 30px auto; /* Center the button below the grid */
+    padding: 12px 25px;
+    background-color: #28a745; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    text-decoration: none;
+     /* In case you change it to an <a> tag later */
+}
+
+.lista-receitas .lista-receitas-Home:hover {
+    background-color: #218838;
+}
+
+.lista-receitas .lista-receitas-delete {
+        display: block;
+    width: fit-content;
+    margin: 30px auto; /* Center the button below the grid */
+    padding: 12px 25px;
+    background-color: #d12d17; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    text-decoration: none;
+     /* In case you change it to an <a> tag later */
+}
+
+.lista-receitas .lista-receitas-delete:hover {
+    background-color: #b31d1d;
+}
+
+/* --- */
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .lista-receitas {
+        grid-template-columns: 1fr; /* Stack items on smaller screens */
+        padding: 15px;
+    }
+
+    .lista-receitas li {
+        margin-bottom: 20px;
+    }
+
+    .lista-receitas li h2 {
+        font-size: 1.5em;
+    }
+
+    .lista-receitas li h3 {
+        font-size: 1em;
+    }
+
+    .lista-receitas li p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .lista-receitas {
+        padding: 10px;
+    }
+
+    .lista-receitas li img {
+        height: 180px;
+    }
+
+    .lista-receitas button {
+        width: 90%;
+        padding: 10px;
+        font-size: 0.9em;
+    }
+}

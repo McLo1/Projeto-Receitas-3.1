@@ -1,0 +1,181 @@
+/* General Body Styles (ensure consistency with other components if shared) */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* --- */
+
+/* Main Cadastro Container */
+.cadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    padding: 20px;
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.cadastro h1 {
+    color: #007bff;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+    text-align: center;
+}
+
+/* --- */
+
+/* Form Styling */
+.form-cadastro-receita {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; /* Limit form width on large screens */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between form elements */
+}
+
+.form-cadastro-receita label {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px; /* Space between label and input */
+    display: block; /* Ensure label takes full width */
+}
+
+.form-cadastro-receita input[type="text"],
+.form-cadastro-receita textarea,
+.form-cadastro-receita select {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+    transition: border-color 0.2s ease-in-out;
+}
+
+.form-cadastro-receita input[type="file"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.form-cadastro-receita input:focus,
+.form-cadastro-receita textarea:focus,
+.form-cadastro-receita select:focus {
+    border-color: #007bff;
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Subtle focus glow */
+}
+
+.form-cadastro-receita textarea {
+    resize: vertical; /* Allow vertical resizing only */
+    min-height: 80px; /* Minimum height for textareas */
+}
+
+/* --- */
+
+/* Buttons */
+.form-cadastro-receita .botao {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    margin-top: 10px; /* Space between form fields and buttons */
+    width: 100%; /* Make buttons full width inside the form */
+}
+
+.form-cadastro-receita .botao[type="submit"] {
+    background-color: #28a745; /* Green for submit */
+    color: white;
+}
+
+.form-cadastro-receita .botao[type="submit"]:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.form-cadastro-receita .botao[type="button"] { /* For "Voltar" button */
+    background-color: #6c757d; /* Gray for back button */
+    color: white;
+}
+
+.form-cadastro-receita .botao[type="button"]:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* --- */
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .cadastro {
+        padding: 15px;
+    }
+
+    .cadastro h1 {
+        font-size: 1.8em;
+    }
+
+    .form-cadastro-receita {
+        padding: 20px;
+        gap: 12px;
+    }
+
+    .form-cadastro-receita input[type="text"],
+    .form-cadastro-receita textarea,
+    .form-cadastro-receita select,
+    .form-cadastro-receita input[type="file"] {
+        padding: 8px;
+        font-size: 0.95em;
+    }
+
+    .form-cadastro-receita .botao {
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .cadastro {
+        padding: 10px;
+    }
+
+    .cadastro h1 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+
+    .form-cadastro-receita {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .form-cadastro-receita label {
+        font-size: 0.9em;
+    }
+
+    .form-cadastro-receita input[type="text"],
+    .form-cadastro-receita textarea,
+    .form-cadastro-receita select,
+    .form-cadastro-receita input[type="file"] {
+        padding: 7px;
+        font-size: 0.9em;
+    }
+
+    .form-cadastro-receita .botao {
+        padding: 8px 12px;
+        font-size: 0.95em;
+    }
+}
