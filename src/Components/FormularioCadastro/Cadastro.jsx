@@ -2,7 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Cadastro.css';
-import Categorias from "../../enums/categorias";
+import Categorias from "../../enums/categoria";
+import categoriasLegiveis from "../../enums/categoriasLegiveis";
 
 export default function Cadastro() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function Cadastro() {
     ingredientes: '',
     modo_de_preparo: '',
     imagemUrl: '',
-    categorias: '',
+    categoria: '',
   });
 
   
@@ -44,6 +45,7 @@ export default function Cadastro() {
       axios.post('http://localhost:8080/receitas', receita )
       .then(response => {
         console.log('Receita cadastrada com sucesso:', response.data);
+        console.log('Receita', receita)
       })
       .catch(error => {
         console.error('Erro ao cadastrar receita:', error);
@@ -93,14 +95,14 @@ export default function Cadastro() {
 
         <label htmlFor="categorias">Categorias:</label>
         <select
-          id="categorias"
-          value={receita.categorias}
-          onChange={(e) => setReceita({ ...receita, categorias: e.target.value })}
+          id="categoria"
+          value={receita.categoria}
+          onChange={(e) => setReceita({ ...receita, categoria: e.target.value })}
         >
           <option value="">Selecione uma categoria</option>
           {Object.values(Categorias).map((categoria) => (
             <option key={categoria} value={categoria}>
-              {categoria}
+              {categoriasLegiveis[categoria] || categoria}
             </option>
           ))}
         </select>

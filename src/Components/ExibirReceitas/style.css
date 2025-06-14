@@ -72,7 +72,7 @@ body {
 /* --- */
 
 /* Back Button */
-.lista-receitas button {
+.lista-receitas .lista-receitas-Home {
     display: block;
     width: fit-content;
     margin: 30px auto; /* Center the button below the grid */
@@ -88,8 +88,28 @@ body {
      /* In case you change it to an <a> tag later */
 }
 
-.lista-receitas button:hover {
+.lista-receitas .lista-receitas-Home:hover {
     background-color: #218838;
+}
+
+.lista-receitas .lista-receitas-delete {
+        display: block;
+    width: fit-content;
+    margin: 30px auto; /* Center the button below the grid */
+    padding: 12px 25px;
+    background-color: #d12d17; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    text-decoration: none;
+     /* In case you change it to an <a> tag later */
+}
+
+.lista-receitas .lista-receitas-delete:hover {
+    background-color: #b31d1d;
 }
 
 /* --- */

@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './style.css';
+import categoriasLegiveis from "../../enums/categoriasLegiveis";
 
 export default function Receitas() {
 
@@ -45,12 +46,12 @@ export default function Receitas() {
                             <h3>Ingredientes:</h3>
                             <p>{receita.ingredientes}</p>
                             <p>{receita.modoDePreparo}</p>
-                            <p><strong>Categoria:</strong> {receita.categorias}</p>
-                            <button onClick={() => deletarReceita(receita.id)}>🗑️</button>
+                            <p><strong>Categorias:</strong> {categoriasLegiveis[receita.categoria]}</p>
+                            <button className="lista-receitas-delete" onClick={() => deletarReceita(receita.id)}>🗑️</button>
                         </li>
 
                     ))}
-                    <button onClick={() => navigate('/')}>Voltar para tela inicial</button>
+                    <button className="lista-receitas-Home" onClick={() => navigate('/')}>Voltar para tela inicial</button>
 
                 </ul>
             </div>
