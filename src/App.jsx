@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, useNavigate } from 'react-router-dom'
+import { BrowserRouter, Navigate } from 'react-router-dom'
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Home from './telas/HomePage'
