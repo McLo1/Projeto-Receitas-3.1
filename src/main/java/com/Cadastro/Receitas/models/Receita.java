@@ -3,14 +3,14 @@ package com.Cadastro.Receitas.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.Scanner;
 @Entity
 public class Receita {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @NotBlank(message = "Insira o titulo da receita")
-    @Lob
     private String titulo;
 
     @NotBlank(message = "Insira a descrição da receita")
@@ -18,7 +18,7 @@ public class Receita {
     private String descricao;
 
     @NotBlank(message = "Insira os ingredientes da Receita")
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String ingredientes;
 
     @NotBlank(message = "Insira o modo de preparo da Receita")
@@ -34,7 +34,7 @@ public class Receita {
     public Receita() {
     }
 
-    public Receita(int id, String titulo, String descricao, String ingredientes, String modo_de_preparo, String imagemUrl, Categorias categoria) {
+    public Receita(long id, String titulo, String descricao, String ingredientes, String modo_de_preparo, String imagemUrl, Categorias categoria) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -44,11 +44,11 @@ public class Receita {
         this.categoria = categoria;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
