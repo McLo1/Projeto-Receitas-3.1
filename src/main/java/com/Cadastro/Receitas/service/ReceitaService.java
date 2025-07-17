@@ -1,22 +1,30 @@
 package com.Cadastro.Receitas.service;
 
 import com.Cadastro.Receitas.models.Receita;
-import com.Cadastro.Receitas.repository.receitaRepository;
+import com.Cadastro.Receitas.repository.ReceitaRepository;
+import org.hibernate.validator.constraints.br.TituloEleitoral;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class receitaService {
+public class ReceitaService {
 
-    private receitaRepository receitaRepository;
+    private ReceitaRepository receitaRepository;
 
-    public receitaService(receitaRepository receitaRepository) {
+    public ReceitaService(ReceitaRepository receitaRepository) {
         this.receitaRepository = receitaRepository;
     }
 
     public List<Receita> listarTodos() {
         return receitaRepository.findAll();
+    }
+
+    public List<Receita> buscarPorTermo(String termo) { // <-- Faz a consulta através
+        if (termo == null || termo.isBlank()) {         //     do titulo ou ingrediente
+            return receitaRepository.findAll();         //     da receita
+        }
+           return receitaRepository.findByTituloContainingIgnoreCaseOrIngredientesContainingIgnoreCase(termo, termo);
     }
 
     public Receita salvar(Receita receita) {
