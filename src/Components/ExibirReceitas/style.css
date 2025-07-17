@@ -153,3 +153,9 @@ body {
         font-size: 0.9em;
     }
 }
+
+.pesquisa-input-button {
+    display: flex;
+    min-width: 100px;
+
+}
