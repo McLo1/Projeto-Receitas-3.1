@@ -155,7 +155,32 @@ body {
 }
 
 .pesquisa-input-button {
-    display: flex;
-    min-width: 100px;
-
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espaço entre o input e o botão */
+  margin: 20px 0;
 }
+
+.pesquisa-input-button input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  flex: 1; /* Faz o input ocupar o máximo possível */
+}
+
+.pesquisa-input-button button {
+  padding: 10px 14px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pesquisa-input-button button:hover {
+  background-color: #45a049;
+}
+
