@@ -1,7 +1,7 @@
 package com.Cadastro.Receitas.controller;
 
 import com.Cadastro.Receitas.models.Receita;
-import com.Cadastro.Receitas.service.receitaService;
+import com.Cadastro.Receitas.service.ReceitaService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,16 +15,21 @@ import java.util.Map;
 @RestController
 @RequestMapping("/receitas")
 @CrossOrigin(origins = "http://localhost:5173")
-public class receitaController {
-    private receitaService receitaService;
+public class ReceitaController {
+    private ReceitaService receitaService;
 
-    public receitaController(receitaService receitaService) {
+    public ReceitaController(ReceitaService receitaService) {
         this.receitaService = receitaService;
     }
 
     @GetMapping
     public List<Receita> listar() {
         return receitaService.listarTodos();
+    }
+
+    @GetMapping("/buscar")
+    public List<Receita> buscarTermo(@RequestParam(required = false) String termo) {
+            return receitaService.buscarPorTermo(termo); // < --- Controller para buscar por ingredientes ou titulo
     }
 
     @PostMapping
@@ -34,9 +39,6 @@ public class receitaController {
                 .body(Map.of("Mensagem:", "Receita Salvo com sucesso!"));
     }
 
-    @RestController
-    @RequestMapping("/receitas")
-    public class ReceitaController {
 
         @PostMapping("/upload-imagem")
         public ResponseEntity<String> uploadImagem(@RequestParam("imagem") MultipartFile imagem) {
@@ -67,8 +69,6 @@ public class receitaController {
                         .body("Erro ao salvar imagem: " + e.getMessage());
             }
         }
-    }
-
 
 
     @PutMapping
