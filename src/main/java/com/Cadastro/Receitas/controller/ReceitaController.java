@@ -78,6 +78,13 @@ public class ReceitaController {
                 .body(Map.of("Mensagem:", "Receita Atualizada com sucesso!"));
     }
 
+    @PutMapping("/{id}/favorito")
+    public ResponseEntity<Map<String, Object>> Toggle_Favoritar(@PathVariable long id) {
+        receitaService.toggleFavoritar(id);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(Map.of("Mensagem:", "Receita Favoritada com sucesso!"));
+    }
+
     @DeleteMapping("{id}")
     public ResponseEntity<Map<String, Object>> deletar(@PathVariable long id) {
         receitaService.remover(id);
