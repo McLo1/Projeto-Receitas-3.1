@@ -32,6 +32,11 @@ public class ReceitaController {
             return receitaService.buscarPorTermo(termo); // < --- Controller para buscar por ingredientes ou titulo
     }
 
+    @GetMapping("/favoritos")
+    public ResponseEntity<List<Receita>> buscarFavoritos() {
+        return ResponseEntity.ok(receitaService.ListarFavoritos());
+    }
+
     @PostMapping
     public ResponseEntity<Map<String, Object>> Salvar(@Valid @RequestBody Receita receita) {
         receitaService.salvar(receita);
