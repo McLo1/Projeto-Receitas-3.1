@@ -31,7 +31,7 @@ public class Receita {
     @Enumerated(EnumType.STRING)
     private Categorias categoria;
 
-    private boolean Favorito = false;
+    private boolean favorito = false;
 
     public Receita() {
     }
@@ -44,7 +44,7 @@ public class Receita {
         this.modo_de_preparo = modo_de_preparo;
         this.imagemUrl = imagemUrl;
         this.categoria = categoria;
-        Favorito = favorito;
+        favorito = favorito;
     }
 
     public long getId() {
@@ -104,10 +104,10 @@ public class Receita {
     }
 
     public boolean isFavorito() {
-        return Favorito;
+        return favorito;
     }
 
     public void setFavorito(boolean favorito) {
-        Favorito = favorito;
+        this.favorito = favorito;
     }
 }
