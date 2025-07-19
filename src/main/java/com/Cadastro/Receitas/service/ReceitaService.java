@@ -2,7 +2,6 @@ package com.Cadastro.Receitas.service;
 
 import com.Cadastro.Receitas.models.Receita;
 import com.Cadastro.Receitas.repository.ReceitaRepository;
-import org.hibernate.validator.constraints.br.TituloEleitoral;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,6 +43,17 @@ public class ReceitaService {
 
         return receitaRepository.save(receitaAtualizar);
     }
+
+    public Receita toggleFavoritar(long id) {
+        Receita receitaAtualizar = receitaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Receita não existe"));
+
+        receitaAtualizar.setFavorito(!receitaAtualizar.isFavorito()); // <-- Faz a verificação do valor boolean
+                                                                      //      Garantindo que ele verifique o valor real
+        return receitaRepository.save(receitaAtualizar);
+    }
+
+
     public void remover(long id) {
         Receita receitaAtualizar = receitaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Receita não existe"));
