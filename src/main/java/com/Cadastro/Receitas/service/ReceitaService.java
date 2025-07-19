@@ -53,6 +53,9 @@ public class ReceitaService {
         return receitaRepository.save(receitaAtualizar);
     }
 
+    public List<Receita> ListarFavoritos() {
+        return receitaRepository.findByFavoritoTrue();
+    }
 
     public void remover(long id) {
         Receita receitaAtualizar = receitaRepository.findById(id)
