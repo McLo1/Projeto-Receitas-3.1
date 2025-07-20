@@ -19,13 +19,13 @@ export default function Receitas() {
 
     const BuscarNomIng = () => {
         axios.get(`http://localhost:8080/receitas/buscar?termo=${busca}`)
-        .then(response => {
-            setReceitas(response.data);
-            console.log(`Exibindo receitas com a busca ${busca}`);
-        })
-        .catch(error => {
-            console.log("Erro ao buscar receitas", error);
-        })
+            .then(response => {
+                setReceitas(response.data);
+                console.log(`Exibindo receitas com a busca ${busca}`);
+            })
+            .catch(error => {
+                console.log("Erro ao buscar receitas", error);
+            })
     }
 
 
@@ -53,6 +53,16 @@ export default function Receitas() {
             });
     }
 
+    function toggleFavorito(id) {
+        axios.put(`http://localhost:8080/receitas/${id}/favorito`)
+            .then(res => {
+                console.log('Favorito atualizado', res.data);
+                // Aqui você pode atualizar o estado para refletir no frontend
+            })
+            .catch(err => {
+                console.error('Erro ao atualizar favorito', err);
+            });
+    }
     return (
         <div>
 
@@ -73,7 +83,10 @@ export default function Receitas() {
                         <p>{receita.ingredientes}</p>
                         <p>{receita.modoDePreparo}</p>
                         <p><strong>Categorias:</strong> {categoriasLegiveis[receita.categoria]}</p>
-                        <button className="lista-receitas-delete" onClick={() => deletarReceita(receita.id)}>🗑️</button>
+                        <div className="deletar-favoritar">
+                            <button className="lista-receitas-delete" onClick={() => deletarReceita(receita.id)}>🗑️</button>
+                            <button className="lista-receitas-favoritar" onClick={() => toggleFavorito(receita.id)}>⭐</button>
+                        </div>
                     </li>
 
                 ))}
