@@ -9,10 +9,11 @@ export default function TelaInicial() {
         <div className="home">
 
             <div className="button-container">
-                <button onClick={() => navigate("/Receitas")}>Verificar Receitas Salvas</button>
-                <button onClick={() => navigate("/Cadastro")}>Cadastrar Nova Receita</button>
-
+                <button className="amarelo" onClick={() => navigate("/favoritos")}>Receitas Favoritas</button>
+                <button className="azul" onClick={() => navigate("/Receitas")}>Verificar Receitas Salvas</button>
+                <button className="verde" onClick={() => navigate("/Cadastro")}>Cadastrar Nova Receita</button>
             </div>
+
         </div>
     );
 }
