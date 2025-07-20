@@ -37,6 +37,11 @@ public class ReceitaController {
         return ResponseEntity.ok(receitaService.ListarFavoritos());
     }
 
+    @GetMapping("/favoritos/buscar")
+    public List<Receita> listarReceitasFavoritadas(@RequestParam(required = false) String termo) {
+        return receitaService.listarReceitasFavoritadas(termo);
+    }
+
     @PostMapping
     public ResponseEntity<Map<String, Object>> Salvar(@Valid @RequestBody Receita receita) {
         receitaService.salvar(receita);
