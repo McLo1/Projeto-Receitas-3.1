@@ -57,6 +57,10 @@ public class ReceitaService {
         return receitaRepository.findByFavoritoTrue();
     }
 
+    public List<Receita> listarReceitasFavoritadas(String termo) {
+        return receitaRepository.findByFavoritoTrueAndTituloContainingIgnoreCaseOrFavoritoTrueAndIngredientesContainingIgnoreCase(termo, termo);
+    }
+
     public void remover(long id) {
         Receita receitaAtualizar = receitaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Receita não existe"));
