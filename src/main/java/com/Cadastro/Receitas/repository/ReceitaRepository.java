@@ -16,4 +16,7 @@ public interface ReceitaRepository extends JpaRepository<Receita, Long> {
     @Query
     List<Receita> findByFavoritoTrue();
 
+    @Query
+    List<Receita> findByFavoritoTrueAndTituloContainingIgnoreCaseOrFavoritoTrueAndIngredientesContainingIgnoreCase(String titulo, String ingredientes);
+
 }
