@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import categoriasLegiveis from "../../enums/categoriasLegiveis";
 import './styleFavoritos.css'
+import Compartilhar from "../modalCompartilhar/compartilhar";
+
 
 export default function Favoritos() {
 
@@ -17,6 +19,16 @@ export default function Favoritos() {
     const handleChange = (event) => {
         setBusca(event.target.value);
     }
+
+    const [mostrarModal, isModalOpen] = useState(false) // <<-- Botão para abrir o modal compartilhar receitas
+    const [receitaselecionada, setReceitaSelecionada] = useState(null);
+
+    const abrirModal = (receita) => {
+        setReceitaSelecionada(receita);
+        isModalOpen(true);
+    };
+
+    const fecharModal = () => isModalOpen(false);
 
 
     const BuscarNomIng = () => {
@@ -38,7 +50,7 @@ export default function Favoritos() {
                 console.log('Receitas obtidas com sucesso:', response.data);
             })
             .catch(error => {
-                console.error('Erro ao obter receitas:', error);
+                console.error('Erro a ço obter receitas:', error);
             });
     }, []);
 
@@ -88,6 +100,8 @@ export default function Favoritos() {
                         <div className="deletar-favoritar">
                             <button className="lista-receitas-delete" onClick={() => deletarReceita(receita.id)}>🗑️</button>
                             <button className="lista-receitas-favoritar" onClick={() => toggleFavorito(receita.id)}>⭐</button>
+                            <button className="lista-receitas-compartilhar" onClick={() => abrirModal(receita)}>🔗</button>
+
                         </div>
                     </li>
 
@@ -95,6 +109,8 @@ export default function Favoritos() {
                 <button className="lista-receitas-Home" onClick={() => navigate('/')}>Voltar para tela inicial</button>
 
             </ul>
+
+            {mostrarModal && <Compartilhar fecharModal={fecharModal} receita={receitaselecionada} />}
         </div>
     )
 }
