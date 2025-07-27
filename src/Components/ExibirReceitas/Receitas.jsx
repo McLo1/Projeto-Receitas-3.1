@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './style.css';
 import categoriasLegiveis from "../../enums/categoriasLegiveis";
+import Compartilhar from "../modalCompartilhar/compartilhar";
 
 export default function Receitas() {
 
@@ -16,6 +17,16 @@ export default function Receitas() {
         setBusca(event.target.value);
     }
 
+
+    const [mostrarModal, isModalOpen] = useState(false) // <<-- Botão para abrir o modal compartilhar receitas
+    const [receitaselecionada, setReceitaSelecionada] = useState(null);
+
+    const abrirModal = (receita) => {
+        setReceitaSelecionada(receita);
+        isModalOpen(true);
+    };
+
+    const fecharModal = () => isModalOpen(false);
 
     const BuscarNomIng = () => {
         axios.get(`http://localhost:8080/receitas/buscar?termo=${busca}`)
@@ -81,11 +92,13 @@ export default function Receitas() {
                         <p>{receita.descricao}</p>
                         <h3>Ingredientes:</h3>
                         <p>{receita.ingredientes}</p>
-                        <p>{receita.modoDePreparo}</p>
+                        <h3>Modo de Preparo:</h3>
+                        <p>{receita.modo_de_preparo}</p>
                         <p><strong>Categorias:</strong> {categoriasLegiveis[receita.categoria]}</p>
                         <div className="deletar-favoritar">
                             <button className="lista-receitas-delete" onClick={() => deletarReceita(receita.id)}>🗑️</button>
                             <button className="lista-receitas-favoritar" onClick={() => toggleFavorito(receita.id)}>⭐</button>
+                            <button className="lista-receitas-compartilhar" onClick={() => abrirModal(receita)}>🔗</button>
                         </div>
                     </li>
 
@@ -93,6 +106,8 @@ export default function Receitas() {
                 <button className="lista-receitas-Home" onClick={() => navigate('/')}>Voltar para tela inicial</button>
 
             </ul>
+
+            {mostrarModal && <Compartilhar fecharModal={fecharModal} receita={receitaselecionada} />}
         </div>
     )
 
