@@ -132,7 +132,25 @@ body {
 
 .lista-receitas-favoritar:hover {
     transform: scale(1.2);
-    color: #f1c40f;
+    background-color: #dfb611;
+}
+/* --- */
+
+/* Estilização do botão de compartilhar */
+.lista-receitas-compartilhar {
+    padding: 10px 20px;
+    background-color: #424242f3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease;
+}
+
+.lista-receitas-compartilhar:hover {
+    transform: scale(1.2);
+    background-color: #252525f3;
 }
 /* --- */
 
