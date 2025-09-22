@@ -14,7 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/receitas")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://mclo1.github.io")
 public class ReceitaController {
     private ReceitaService receitaService;
 
